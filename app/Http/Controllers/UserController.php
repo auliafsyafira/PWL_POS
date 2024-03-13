@@ -10,8 +10,16 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user = UserModel::where('id_level', 2)->count();
-        //dd($user);
+        $user = UserModel::firstOrNew(
+            [
+                'username' => 'manager33',
+                'nama' => 'Manager Tiga Tiga',
+                'password' => Hash::make('12345'),
+                'id_level' => 2
+            ],
+        );
+
         return view('user', ['data' => $user]);
     }
 }
+
