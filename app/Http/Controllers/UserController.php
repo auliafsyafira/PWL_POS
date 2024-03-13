@@ -10,17 +10,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        $data = [
-            'username' => 'customer-1',
-            'nama' => 'Pelanggan',
-            'password' => Hash::make('12345'),
-            'id_level' => 4
-        ];
-        UserModel::insert($data);
-
-    // coba akses model UserModel
-    $user = UserModel::all(); 
-    return view('user', ['data' => $user]);
+        $user = UserModel::findOr(20, ['username', 'nama'], function() {
+            abort(404);
+        }); 
+        return view('user', ['data' => $user]);
     }
 }
-
