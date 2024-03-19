@@ -49,7 +49,7 @@
 {{-- Add common Javascript/Jquery code --}}
 
 @push('js')
-<script src="https:://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
 @endpush
 
 @stack('scripts')

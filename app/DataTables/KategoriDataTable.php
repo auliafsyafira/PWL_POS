@@ -1,6 +1,7 @@
 <?php
 
 namespace App\DataTables;
+
 use App\Models\KategoriModel;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -21,9 +22,9 @@ class KategoriDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-        /* ->addColumn('action', 'kategori.action') */
-        ->setRowId('id');
-        }
+            /* ->addColumn('action', 'kategori.action') */
+            ->setRowId('id');
+    }
 
     /**
      * Get the query source of dataTable.
@@ -50,9 +51,10 @@ class KategoriDataTable extends DataTable
                 Button::make('pdf'),
                 Button::make('print'),
                 Button::make('reset'),
-                Button::make('reload')
+                Button::make('reload'),
+                Button::make('add')
             ]);
-        }
+    }
 
     /**
      * Get the dataTable columns definition.

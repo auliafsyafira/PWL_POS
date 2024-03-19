@@ -319,9 +319,17 @@ return [
             'text' => 'pages',
             'url' => 'admin/pages',
             'icon' => 'far fa-fw fa-file',
-            'label' => 4,
+            'label' => 99,
             'label_color' => 'success',
         ],
+
+        //TUGAS PRAKTIKUM NO 2
+        [
+            'text' => 'Manage Category',
+            'url' => '/kategori',
+            'icon' => 'fas fa-fw fa-th-list',
+        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
