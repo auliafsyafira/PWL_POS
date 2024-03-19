@@ -323,7 +323,7 @@ return [
             'label_color' => 'success',
         ],
 
-        //TUGAS PRAKTIKUM NO 2
+        //TUGAS PRAKTIKUM NOMOR 2
         [
             'text' => 'Manage Category',
             'url' => '/kategori',
