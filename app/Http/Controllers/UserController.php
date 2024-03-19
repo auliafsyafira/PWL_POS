@@ -12,6 +12,7 @@ class UserController extends Controller
     {
         $user = UserModel::with('level')->get();
         return view('user', ['data' => $user]);
+        
     }
 
     // public function index()
@@ -63,8 +64,6 @@ class UserController extends Controller
 
         return redirect('/user');
     }
-
-   
 
     // $user = UserModel::firstOrNew(
     //     [
