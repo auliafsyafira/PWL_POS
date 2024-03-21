@@ -323,12 +323,7 @@ return [
             'label_color' => 'success',
         ],
 
-        //TUGAS PRAKTIKUM NOMOR 2
-        [
-            'text' => 'Manage Category',
-            'url' => '/kategori',
-            'icon' => 'fas fa-fw fa-th-list',
-        ],
+        
 
         ['header' => 'account_settings'],
         [
@@ -379,6 +374,14 @@ return [
                 ],
             ],
         ],
+
+        //TUGAS PRAKTIKUM NO 2
+        [
+            'text' => 'Category',
+            'url' => '/kategori',
+            'icon' => 'fas fa-fw fa-th-list',
+        ],
+
         ['header' => 'labels'],
         [
             'text' => 'important',
