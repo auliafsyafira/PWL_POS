@@ -6,29 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
-        Schema::create('m_user', function (Blueprint $table) {
+        Schema::create('useri', function (Blueprint $table) {
             $table->id('user_id');
-            $table->unsignedBigInteger('id_level')->index(); // indexing untuk foreignKey
-            $table->string('username', 20)->unique(); // unique untuk memastikan tidak ada username yang sama
+            $table->unsignedBigInteger('id_level')->index(); 
+            $table->string('username', 20)->unique(); 
             $table->string('nama', 100);
             $table->string('password');
             $table->timestamps();
 
-            // Mendefinisikan Foreign Key pada kolom id_level mengacu pada kolom id_level di table m_level
             $table->foreign('id_level')->references('id_level')->on('m_level');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('m_user');
+        Schema::dropIfExists('useri');
     }
 };
+
