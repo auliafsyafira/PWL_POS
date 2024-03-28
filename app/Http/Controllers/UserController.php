@@ -17,10 +17,18 @@ class UserController extends Controller {
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'username' => 'bail|required|string|max:255',
+            'nama' => 'bail|required|string|max:255',
+            'password' => 'bail|required|string|max:255',
+            'id_level' => 'bail|required|string|max:255',
+        ]);
+
         UserModel::create([
-            'user_username' => $request->username,
-            'user_nama' => $request->namaUser,
-            'user_level' => $request->id_level,
+            'username' => $request->username,
+            'nama' => $request->namaUser,
+            'password' => Hash::make($request->password),
+            'id_level' => $request->id_level,
         ]);
         return redirect('/user');
     }
