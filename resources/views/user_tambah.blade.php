@@ -14,7 +14,7 @@
         <input type="password" name="password" placeholder="Masukkan Password">
         <br>
         <label>Level ID</label>
-        <input type="number" name="level_id" placeholder="Masukkan ID Level">
+        <input type="number" name="id_level" placeholder="Masukkan ID Level">
         <br><br>
         <input type="submit" class="btn btn-success" value="Simpan">
     </form>

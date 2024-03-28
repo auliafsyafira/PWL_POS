@@ -19,3 +19,4 @@ class UserModel extends Model
         return $this->belongsTo(LevelModel::class, 'id_level', 'id_level');
     }
 }
+

@@ -323,6 +323,22 @@ return [
             'label_color' => 'success',
         ],
 
+       //JOBSHEET 6 
+
+        [
+            'text' => 'User',
+            'url' => '/user',
+            'icon' => 'fas fa-users',
+            'label_color' => 'success',
+        ],
+
+        [
+            'text' => 'Level',
+            'url' => '/level',
+            'icon' => 'fas fa-child',
+            'label_color' => 'success',
+        ],
+
         
 
         ['header' => 'account_settings'],

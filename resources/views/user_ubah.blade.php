@@ -24,7 +24,7 @@
             <input type="password" name="password" placeholder="Masukkan Password"value="{{ $data->password }}">
             <br>
             <label>Level ID</label>
-            <input type="number" name="level_id" placeholder="Masukkan ID Level" value="{{ $data->id_level }}">
+            <input type="number" name="id_level" placeholder="Masukkan ID Level" value="{{ $data->id_level }}">
             <br><br>
             <input type="submit" class="btn btn-success" value="Ubah">
         </form>
