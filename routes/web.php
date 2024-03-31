@@ -5,6 +5,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\POSController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,4 +46,7 @@ Route::put('/level/{id}', [LevelController::class, 'edit_simpan'])->name('/level
 Route::put('/level/delete/{id}', [LevelController::class, 'delete'])->name('/level/delete');
 
 Route::resource('m_user', POSController::class);
+
+//JOBSHEET 7
+Route::get('/', [WelcomeController::class, 'index']);
 
