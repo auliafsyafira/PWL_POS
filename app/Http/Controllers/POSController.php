@@ -39,7 +39,7 @@ class POSController extends Controller
             'username' => 'required',
             'nama' => 'required',
             'password' => 'required',
-            'level_id' => 'required',
+            'id_level' => 'required',
         ]);
 
         // Fungsi eloquent untuk menambah data
@@ -48,7 +48,7 @@ class POSController extends Controller
             'username' => $request->username,
             'nama' => $request->nama,
             'password' => Hash::make($request->password),
-            'level_id' =>  $request->level_id,
+            'id_level' =>  $request->id_level,
         ]);
 
         return redirect()->route('m_user.index')

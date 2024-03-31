@@ -15,7 +15,7 @@ class m_user extends Model
 
     protected $fillable = [
         'user_id',
-        'level_id',
+        'id_level',
         'username',
         'nama',
         'password',

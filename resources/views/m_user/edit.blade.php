@@ -39,7 +39,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Level_id:</strong>
-                    <input type="text" name="levelid" value="{{ $useri->level_id }}" class="form-control"
+                    <input type="text" name="levelid" value="{{ $useri->id_level }}" class="form-control"
                         placeholder="Masukkan level">
                 </div>
             </div>

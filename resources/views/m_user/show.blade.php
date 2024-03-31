@@ -22,7 +22,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Level_id:</strong>
-                {{ $useri->level_id }}
+                {{ $useri->id_level }}
             </div>
         </div>
 
