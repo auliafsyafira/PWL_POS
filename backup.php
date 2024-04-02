@@ -21,9 +21,9 @@ class UserController extends Controller {
 
         $activeMenu = 'user'; //set menu yang sedang aktif
 
-        $level = LevelModel::all(); // ambil data level untuk filter level
+        //$level = LevelModel::all(); // ambil data level untuk filter level 'level' => $level
         
-        return view('user.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level, 'activeMenu' => $activeMenu]);
+        return view('user.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
     }
 
     // Ambil data user dalam bentuk json untuk datatables
@@ -31,11 +31,11 @@ class UserController extends Controller {
     {
         $users = UserModel::select('user_id', 'username', 'nama', 'id_level') ->with('level');
 
-        // filter data user berdasarkan id_level
-        if ($request->id_level) {
-            $users->where('id_level', $request->id_level);
-        }
-
+        // // filter data user berdasarkan id_level
+        // if ($request->id_level) {
+        //     $users->where('id_level', $request->id_level);
+        // }
+        
         return DataTables::of($users)
         ->addIndexColumn() // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
         ->addColumn('aksi', function ($user) { // menambahkan kolom aksi
@@ -212,3 +212,104 @@ class UserController extends Controller {
 //     $user->delete();
 //     return redirect('/user');
 // }
+
+
+
+
+// INDEX class="BLADE PHP"
+@extends('layouts.template')
+
+@section('content')
+    <div class="card card-outline card-primary">
+        <div class="card-header">
+            <h3 class="card-title">{{ $page->title }}</h3>
+            <div class="card-tools">
+                <a class="btn btn-sm btn-primary mt-1" href="{{ url('user/create') }}">Tambah</a>
+            </div>
+        </div>
+        <div class="card-body">
+            @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
+            {{-- <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <label class="col-1 control-label col-form-label">Filter:</label>
+                        <div class="col-3">
+                            <select class="form-control" id="id_level" name="id_level" required>
+                                <option value="">- Semua -</option>
+                                @foreach ($level as $item)
+                                <option value="{{ $item->id_level }}">{{ $item->level_nama }}</option>      
+                                @endforeach
+                            </select>
+                            <small class="form-text text-muted">Level Pengguna</small>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            <table class="table table-bordered table-striped table-hover table-sm" id="table_user">
+            <thead>
+                <tr><th>ID</th><th>Username</th><th>Nama</th><th>Level Pengguna</th><th>Aksi</th></tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@endsection
+
+@push('css')
+@endpush
+
+@push('js')
+    <script>
+        $(document).ready(function() {
+            var dataUser = $('#table_user').DataTable({
+                serverSide: true, // serverSide: true, jika ingin menggunakan server side processing
+                ajax: {
+                    "url": "{{ url('user/list') }}",
+                    "dataType": "json",
+                    "type": "POST"
+                    // "data" : function(d) {
+                    //     d.id_level = $('#id_level').val();
+                    }
+                },
+                columns: [
+                    {
+                        data: "DT_RowIndex", // nomor urut dari laravel datatable addIndexColumn()
+                        className: "text-center",
+                        orderable: false,
+                        searchable: false
+                    },{
+                        data: "username",
+                        className: "",
+                        orderable: true, // orderable: true, jika ingin kolom ini bisa diurutkan
+                        searchable: true // searchable: true, jika ingin kolom ini bisa dicari
+                    },{
+                        data: "nama",
+                        className: "",
+                        orderable: true, // orderable: true, jika ingin kolom ini bisa diurutkan
+                        searchable: true // searchable: true, jika ingin kolom ini bisa dicari
+                    },{
+                        data: "level.level_nama",
+                        className: "",
+                        orderable: false, // orderable: true, jika ingin kolom ini bisa diurutkan
+                        searchable: false // searchable: true, jika ingin kolom ini bisa dicari
+                    },{
+                        data: "aksi",
+                        className: "",
+                        orderable: false, // orderable: true, jika ingin kolom ini bisa diurutkan
+                        searchable: false // searchable: true, jika ingin kolom ini bisa dicari
+                    }
+                ]
+            });
+
+            // $('#id_level').on('change', function() {
+            //     dataUser.ajax.reload();
+            // });
+
+        }); 
+    </script>
+@endpush
+
