@@ -5,7 +5,7 @@
         <div class="card-header">
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools">
-                <a class="btn btn-sm btn-primary mt-1" href="{{ url('kategori/create') }}">Tambah</a>
+                <a class="btn btn-sm btn-primary mt-1" href="{{ url('barang/create') }}">Tambah</a>
             </div>
         </div>
         <div class="card-body">
@@ -20,21 +20,22 @@
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label">Filter:</label>
                         <div class="col-3">
-                            <select class="form-control" id="kategori_id" name="kategori_id" required>
+                            <select class="form-control" id="barang_id" name="barang_id" required>
                                 <option value="">- Semua -</option>
-                                @foreach($kategori as $item)
-                                    <option value="{{ $item->kategori_id }}">{{ $item->kategori_nama }}</option>
+                                @foreach($barang as $item)
+                                    <option value="{{ $item->barang_id }}">{{ $item->barang_nama }}</option>
                                 @endforeach
                             </select>
-                            <small class="form-text text-muted">Kategori Pengguna</small>
+                            <small class="form-text text-muted">Barang</small>
                         </div>
                     </div>
                 </div>
             </div>
-            <table class="table table-bordered table-striped table-hover table-sm" id="table_kategori">
+            <table class="table table-bordered table-striped table-hover table-sm" id="table_barang">
                 <thead>
                     <tr>
-                        <th>ID</th><th>Kode Kategori</th><th>Nama Kategori</th><th>Aksi</th></tr>
+                        <th>ID</th><th>Kode Barang</th><th>Nama Barang</th><th>Harga Beli</th><th>Harga Jual</th><th>Aksi</th>
+                    </tr>
                 </thead>
             </table>
         </div>
@@ -44,14 +45,14 @@
 @push('js')
     <script>
         $(document).ready(function() {
-            var dataKategori = $('#table_kategori').DataTable({
+            var dataBarang = $('#table_barang').DataTable({
                 serverSide: true,
                 ajax: {
-                    "url": "{{ url('kategori/list') }}", // Ubah url sesuai dengan route yang digunakan
+                    "url": "{{ url('barang/list') }}", // Ubah url sesuai dengan route yang digunakan
                     "dataType": "json",
                     "type": "POST",
                     "data": function (d) {
-                        d.kategori_id = $('#kategori_id').val();
+                        d.barang_id = $('#barang_id').val();
                     }
                 },
                 columns: [
@@ -62,13 +63,25 @@
                         searchable: false
                     },
                     {
-                        data: "kategori_kode",
+                        data: "barang_kode",
                         className: "",
                         orderable: true,
                         searchable: true
                     },
                     {
-                        data: "kategori_nama",
+                        data: "barang_nama",
+                        className: "",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "harga_beli",
+                        className: "",
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: "harga_jual",
                         className: "",
                         orderable: true,
                         searchable: true
@@ -82,8 +95,8 @@
                 ]
             });
 
-            $('#kategori_id').on('change', function() {
-                dataKategori.ajax.reload();
+            $('#barang_id').on('change', function() {
+                dataBarang.ajax.reload();
             });
         });
     </script>

@@ -77,7 +77,7 @@ class LevelDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(100)
+                  ->width(50)
                   ->addClass('text-center'),
         ];
     }
