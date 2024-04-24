@@ -85,7 +85,7 @@ Route::group(['prefix' => 'transaksi'], function () {
     Route::delete('/{id}', [TransaksiController::class, 'destroy']); // menghapus data kategori barang
 });
 
-// JS 8
+// Jobsheet 9
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('proses_login', [AuthController::class, 'proses_login'])->name('proses_login');

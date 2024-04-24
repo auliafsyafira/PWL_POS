@@ -33,3 +33,4 @@ class Cek_login
         return redirect('login')->with('error', 'Maaf anda tidak memiliki akses');
     }
 }
+
