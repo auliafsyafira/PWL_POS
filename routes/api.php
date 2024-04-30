@@ -21,9 +21,12 @@ use App\Http\Controllers\Api\BarangController;
 */
 
 Route::post('/register', App\Http\Controllers\Api\RegisterController::class)->name('register');
+
 Route::post('/login', App\Http\Controllers\Api\LoginController::class)->name('login');
+
 Route::post('/logout', App\Http\Controllers\Api\LogoutController::class)->name('logout');
 
+// LEVEL
 Route::get('levels', [LevelController::class, 'index']);
 Route::post('levels', [LevelController::class, 'store']);
 Route::get('levels/{level}', [LevelController::class, 'show']);
