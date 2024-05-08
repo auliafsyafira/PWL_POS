@@ -26,7 +26,6 @@ class BarangController extends Controller
         return BarangModel::find($barang);
     }
 
-
     public function destroy(BarangModel $barang){
         $barang->delete();
         return response()->json([
@@ -35,3 +34,4 @@ class BarangController extends Controller
         ]);
     }
 }
+

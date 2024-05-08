@@ -4,34 +4,30 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class TransaksiModel extends Model
 {
     use HasFactory;
-    // table name, primary key, and other property related to database
+
     protected $table = 't_penjualan';
-    protected $primaryKey = 'penjualan_id';
-    
-    // fillable field
-    protected $fillable = [
-        'penjualan_id',
-        'user_id',
-        'pembeli',
-        'penjualan_kode',
-        'penjualan_tanggal'
+    protected $primaryKey = 'penjualan_id'; 
+
+    protected $guarded = [
+        'penjualan_id'
     ];
 
-    // relationship with user
-    public function user()
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($image) => url('/storage/posts/' . $image),
+        );
+    }
+
+    public function user(): BelongsTo
     {
         return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
     }
-
-    // relationship with detail penjualan
-    public function detail_penjualan()
-    {
-        return $this->hasMany(TransaksiDetailModel::class, 'penjualan_id', 'penjualan_id');
-    }
-
-
 }

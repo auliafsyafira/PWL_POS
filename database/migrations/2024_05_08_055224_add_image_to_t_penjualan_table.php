@@ -9,16 +9,15 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::table('m_barang', function (Blueprint $table) {
+        Schema::table('t_penjualan', function (Blueprint $table) {
             $table->string('image');
         });
     }
 
     public function down(): void
     {
-        Schema::table('m_barang', function (Blueprint $table) {
+        Schema::table('t_penjualan', function (Blueprint $table) {
             $table->dropColumn('image');
         });
     }
 };
-
