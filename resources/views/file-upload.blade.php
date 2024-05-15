@@ -17,12 +17,12 @@
             
             <div class="mb-3">
                 <label for="berkas" class="form-label">Gambar Profile</label>
-                <input type="file" class="form=control" id="berkas" name="berkas">
+                <input type="file" class="form-control" id="berkas" name="berkas">
                 @error('berkas')
                 <div class="textdanger">{{ $message }}</div>
                 @enderror
-        </div>
-        <button type="submit" class="btn btn-primary my-2">Upload</button>
+            </div>
+            <button type="submit" class="btn btn-primary my-2">Upload</button>
         </form>
     </div>
 
