@@ -113,6 +113,10 @@ Route::get('/', function(){
 Route::get('/file-upload', [FileUploadController::class, 'fileUpload']);
 Route::post('/file-upload', [FileUploadController::class, 'prosesFileUpload']);
 
+//JOBSHEET 12 - TUGAS
+Route::get('/file-upload-rename',[FileUploadController::class, 'fileUploadRename']);
+Route::post('/file-upload-rename',[FileUploadController::class, 'prosesFileUploadRename']);
+
 
 
 
