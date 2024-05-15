@@ -54,15 +54,27 @@ Route::group(['prefix' => 'kategori'], function () {
 });
 
 Route::group(['prefix' => 'barang'], function () {
-    Route::get('/', [BarangController::class, 'index']);          // menampilkan halaman awal kategori barang
-    Route::post('/list', [BarangController::class, 'list']);      // menampilkan data kategori barang dalam bentuk json untuk datatables
-    Route::get('/create', [BarangController::class, 'create']);   // menampilkan halaman form tambah kategori barang
-    Route::post('/', [BarangController::class, 'store']);         // menyimpan data kategori barang baru
-    Route::get('/{id}', [BarangController::class, 'show']);       // menampilkan detail kategori barang
-    Route::get('/{id}/edit', [BarangController::class, 'edit']);  // menampilkan halaman form edit kategori barang
-    Route::put('/{id}', [BarangController::class, 'update']);     // menyimpan perubahan data kategori barang
-    Route::delete('/{id}', [BarangController::class, 'destroy']); // menghapus data kategori barang
+    Route::get('/', [BarangController::class, 'index']); // menampilkan halaman awal Barang
+    Route::post('/list', [BarangController::class, 'list']); // menampilkan data Barang dalam bentuk json untuk datatables
+    Route::get('/create', [BarangController::class, 'create']);  // menampilkan halaman form tambah Barang 
+    Route::post('/', [BarangController::class, 'store']); // menyimpan data Barang baru
+    Route::get('/{id}', [BarangController::class, 'show']); // menampilkan detail Barang
+    Route::get('/{id}/edit', [BarangController::class, 'edit']); // menampilkan halaman form edit Barang
+    Route::put('/{id}', [BarangController::class, 'update']);  // menyimpan perubahan data Barang
+    Route::delete('/{id}', [BarangController::class, 'destroy']); // menghapus data user
 });
+
+
+// Route::group(['prefix' => 'barang'], function () {
+//     Route::get('/', [BarangController::class, 'index']);          // menampilkan halaman awal kategori barang
+//     Route::post('/list', [BarangController::class, 'list']);      // menampilkan data kategori barang dalam bentuk json untuk datatables
+//     Route::get('/create', [BarangController::class, 'create']);   // menampilkan halaman form tambah kategori barang
+//     Route::post('/', [BarangController::class, 'store']);         // menyimpan data kategori barang baru
+//     Route::get('/{id}', [BarangController::class, 'show']);       // menampilkan detail kategori barang
+//     Route::get('/{id}/edit', [BarangController::class, 'edit']);  // menampilkan halaman form edit kategori barang
+//     Route::put('/{id}', [BarangController::class, 'update']);     // menyimpan perubahan data kategori barang
+//     Route::delete('/{id}', [BarangController::class, 'destroy']); // menghapus data kategori barang
+// });
 
 Route::group(['prefix' => 'stok'], function () {
     Route::get('/', [StokController::class, 'index']);          // menampilkan halaman awal kategori barang
@@ -86,17 +98,11 @@ Route::group(['prefix' => 'transaksi'], function () {
     Route::delete('/{id}', [TransaksiController::class, 'destroy']); // menghapus data kategori barang
 });
 
-// Jobsheet 9
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('proses_register', [AuthController::class, 'proses_register'])->name('proses_register');
-
-// kita atur juga untuk middleware menggunakan group pada routing
-// didalamnya terdapat group untuk mengecek kondisi login
-// jika user yang login merupakan admin maka akan diarahkan ke AdminController
-// jika user yang login merupakan manager maka akan diarahkan ke UserController 
 
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:1']], function () {
@@ -113,46 +119,5 @@ Route::get('/', function(){
 Route::get('/file-upload', [FileUploadController::class, 'fileUpload']);
 Route::post('/file-upload', [FileUploadController::class, 'prosesFileUpload']);
 
-//JOBSHEET 12 - TUGAS
 Route::get('/file-upload-rename',[FileUploadController::class, 'fileUploadRename']);
 Route::post('/file-upload-rename',[FileUploadController::class, 'prosesFileUploadRename']);
-
-
-
-
-// -------------------------------------------------------------------------------
-// Route::get('/level', [LevelController::class, 'index']);
-// Route::get('/kategori', [KategoriController::class, 'index']);
-// Route::get('/user', [UserController::class, 'index']);
-// Route::get('/user/tambah', [UserController::class, 'tambah']);
-// Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan']);
-// Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);
-// Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan']);
-// Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
-
-// Route::get('/kategori', [KategoriController::class, 'index']);
-
-// Route::get('/kategori/create', [KategoriController::class, 'create']);
-// Route::post('/kategori', [KategoriController::class, 'store']);
-
-// Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit']);
-// Route::put('/kategori/simpan_edit/{id}', [KategoriController::class, 'simpan_edit'])->name('kategori.simpan_edit');
-// Route::get('/kategori/delete/{id}', [KategoriController::class, 'delete']);
-
-//JOBSHEET 6 - m_user
-// Route::get('/user/create', [UserController::class, 'create'])->name('/user/create');
-// Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-// Route::get('/user', [UserController::class, 'index'])->name('user.index');
-// Route::post('/user', [UserController::class, 'store']);
-// Route::put('/user/{id}', [UserController::class, 'edit_simpan'])->name('/user/edit_simpan');
-// Route::get('/user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
-
-//JOBSHEET 6 - m_level
-// Route::get('/level', [LevelController::class, 'index'])->name('level.index');
-// Route::get('/level/create', [LevelController::class, 'create'])->name('/level/create');
-// Route::post('/level', [LevelController::class, 'store']);
-// Route::get('/level/edit/{id}', [LevelController::class, 'edit'])->name('/level/edit');
-// Route::put('/level/{id}', [LevelController::class, 'edit_simpan'])->name('/level/edit_simpan');
-// Route::put('/level/delete/{id}', [LevelController::class, 'delete'])->name('/level/delete');
-
-// Route::resource('m_user', POSController::class);

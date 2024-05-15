@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.template')
 
 @section('content')
     <div class="card card-outline card-primary">

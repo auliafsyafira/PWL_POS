@@ -28,7 +28,7 @@ class UserModel extends Authenticatable implements JWTSubject
 
     public function level()
     {
-        return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
+        return $this->belongsTo(LevelModel::class, 'id_level', 'id_level');
     }
     protected function image(): Attribute
     {
